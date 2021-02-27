@@ -23,6 +23,6 @@ void	ft_putnbr(int nb)
 		{
 			ft_putnbr(nb/10);
 		}
-		ft_putchar(48 + nb % 10);
+		ft_putchar('0' + nb % 10);
 	}
 }

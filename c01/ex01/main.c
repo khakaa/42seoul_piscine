@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void	ft_ultimate_ft(int *********nbr);
 
 int main()
@@ -24,4 +26,6 @@ int main()
 	nbr9 = &nbr8;
 
 	ft_ultimate_ft(nbr9);
+	printf("%d", a);
+	return 0;
 }

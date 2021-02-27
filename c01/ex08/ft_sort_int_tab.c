@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: harpark <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 19:22:01 by harpark           #+#    #+#             */
-/*   Updated: 2021/02/25 19:22:04 by harpark          ###   ########.fr       */
+/*   Created: 2021/02/25 22:15:37 by harpark           #+#    #+#             */
+/*   Updated: 2021/02/25 22:22:53 by harpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_div_mod(int *a, int *b)
+#include <stdio.h>
+
+void	ft_sort_int_tab(int *tab, int size)
 {
+	int i;
+	int j;
 	int temp;
 
-	temp = *a;
-	*a = *a / *b;
-	*b = temp & *b;
+	i = 1;
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i)
+		{
+			if (tab[j] > tab[j + 1])
+			{
+				temp = tab[j];
+				tab[j] = tab[j + 1];
+				tab[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }

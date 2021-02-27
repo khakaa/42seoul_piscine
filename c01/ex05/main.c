@@ -2,7 +2,7 @@ void	ft_putstr(char *str);
 
 int	main()
 {
-	char str[5] = {'s','t','e','r'};
+	char str[] = "adsasd";
 
 	ft_putstr(str);
 

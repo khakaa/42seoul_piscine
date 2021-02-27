@@ -9,5 +9,12 @@ int	main()
 
 void 	ft_print_numbers(void)
 {
-	write(1, "0123456789", 10);
+	char num = 0 + '0';
+
+	while(num <= '9')
+	{
+		write(1, &num, 1);
+		num++;
+	}
+	//write(1, "0123456789", 10);//
 }
