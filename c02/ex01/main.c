@@ -4,7 +4,7 @@ void	*ft_strncpy(char *dest, char *src, unsigned int n);
 
 int main(void)
 {
-        char src[] = "hell0 42";
+        char src[] = "hello 42";
         char dest[30];
 
         ft_strncpy(dest, src, 3);

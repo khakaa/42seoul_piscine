@@ -11,7 +11,7 @@ int	main()
 	ft_sort_int_tab(tab, sizeof(tab)/sizeof(int));
 
 	i = 0;
-	while(i < sizeof(tab)/sizeof(int))
+	while(i < 8)
 	{
 		printf("%d ", tab[i]);
 		i++;

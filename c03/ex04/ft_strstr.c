@@ -1,8 +1,10 @@
+
 char	*ft_strstr(char *str, char *to_find)
 {
-	int cnt = -1;
+	int cnt;
 
-	if (!*to_find)	
+	cnt = -1;
+	if (!*to_find)
 		return (str);
 	while (*str)
 	{
@@ -12,8 +14,8 @@ char	*ft_strstr(char *str, char *to_find)
 			cnt++;
 		}
 		if (*to_find == '\0')
-			return(str-cnt);
+			return (str - cnt);
 		str++;
 	}
-	return(0);
+	return (0);
 }
