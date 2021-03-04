@@ -10,6 +10,6 @@ void	ft_putnbr_base(int nbr, char *base);
 
 int	main()
 {
-	char base[] = "aba";
+	char base[] = "0123456789";
 	ft_putnbr_base(30, base);
 }

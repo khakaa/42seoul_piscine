@@ -58,13 +58,15 @@ void	ft_putnbr_base(int nbr, char *base)
 			ft_putchar('-');
 			nbr = -nbr;
 		}
-		while (nbr)
+		while (nbr != 0)
 		{
 			nbr_result[i] = nbr % base_l;
 			nbr = nbr / base_l;
 			i++;
 		}
 		while (--i >= 0)
+		{
 			ft_putchar(base[nbr_result[i]]);
+		}
 	}
 }

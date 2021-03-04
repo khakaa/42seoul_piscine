@@ -13,7 +13,7 @@ int	check_whitespace_minus(char *str);
 int	main()
 {
 	char str[] = "\n\t--++-ab23q";
-	char base[] = "0123456789abcdef";
+	char base[] = "abcd";
 
 	printf("%d",ft_atoi_base(str,base));
 }
