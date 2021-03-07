@@ -7,5 +7,5 @@ int	main(void)
 	char src[] = "hello42";
 	char dest[30];
 
-	printf("%u", ft_strlcpy(dest, src, 5));
+	printf("%u", ft_strlcpy(dest, src, 9));
 }
