@@ -14,7 +14,10 @@ int	ft_str_is_alpha(char *str)
 
 	i = 0;
 	while (str[i])
-		if (!is_alpha(str[i++]))
+	{
+		if (!is_alpha(str[i]))
 			return (0);
+		i++;
+	}
 	return (1);
 }

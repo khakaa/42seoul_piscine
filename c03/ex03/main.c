@@ -7,9 +7,9 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb);
 int	main(void)
 {
 	char dest[30] = "hello42";
-	char src[] = "todayrgergregerge";
+	char src[] = "today";
 	
-	printf("%s", ft_strncat(dest, src, 5));
+	printf("%s", ft_strncat(dest, src, 6));
 	
 	return 0;
 }	

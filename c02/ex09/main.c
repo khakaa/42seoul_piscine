@@ -1,4 +1,4 @@
-##nclude <stdio.h>
+#include <stdio.h>
 
 int	is_numeric(char c);
 
@@ -10,7 +10,7 @@ char	ft_strcapitalize(char *str);
 
 int	main()
 {
-	char str[] = " salLt, comMent tu   vas ? 42mots quarante-deux; cinquante+et+un";
+	char str[100] = "salLt, comMent tu   vas ? 42mots quarante-deux; cinquante+et+un";
 
 	printf("%c", ft_strcapitalize(str));
 	return(0);

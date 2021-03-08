@@ -24,17 +24,16 @@ char	*ft_strcapitalize(char *str)
 {
 	int i;
 
-	if (is_lowercase(str[0]))
-	{
-		str[0] = str[0] - 32;
-	}
-
 	i = 1;
+	if (is_lowercase(str[i-1]))
+	{
+		str[i-1] = str[i-1] - 32;
+	}
 	while (str[i] != '\0')
 	{
 		if (!(is_lowercase(str[i-1]))
-			&& !(is_uppercase(str[i-1]))
-			&& !(is_numeric(str[i-1])))
+			|| !(is_uppercase(str[i-1]))
+			|| !(is_numeric(str[i-1])))
 			{
 				if (is_lowercase(str[i]))
 					str[i] = str[i] - 32;
