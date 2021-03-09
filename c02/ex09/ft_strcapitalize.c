@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 int		is_numeric(char c)
 {
@@ -32,8 +33,8 @@ char	*ft_strcapitalize(char *str)
 	while (str[i] != '\0')
 	{
 		if (!(is_lowercase(str[i-1]))
-			|| !(is_uppercase(str[i-1]))
-			|| !(is_numeric(str[i-1])))
+			&& !(is_uppercase(str[i-1]))
+			&& !(is_numeric(str[i-1])))
 			{
 				if (is_lowercase(str[i]))
 					str[i] = str[i] - 32;
