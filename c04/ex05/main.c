@@ -12,8 +12,8 @@ int	check_whitespace_minus(char *str);
 
 int	main()
 {
-	char str[] = "\n\t--++-10q";
-	char base[] = "01";
+	char str[] = "\n\t--++-30";
+	char base[] = "0123456789";
 
 	printf("%d",ft_atoi_base(str,base));
 }
