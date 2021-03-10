@@ -4,5 +4,5 @@ int	ft_sqrt(int nb);
 
 int main()
 {
-	printf("%d", ft_sqrt(3));
+	printf("%d", ft_sqrt(400000000));
 }

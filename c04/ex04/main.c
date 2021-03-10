@@ -10,6 +10,6 @@ void	ft_putnbr_base(int nbr, char *base);
 
 int	main()
 {
-	char base[] = "0123456789";
-	ft_putnbr_base(30, base);
+	char base[] = "qwerty";
+	ft_putnbr_base(10, base);
 }

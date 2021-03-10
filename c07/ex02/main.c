@@ -6,7 +6,9 @@ int	main()
 {
 	int min = 2;
 	int max = 10;
-	int	*range;
+	int *range;
+
+	//int **range = &range;
 
 		printf("%d", ft_ultimate_range(&range, min, max));
 }

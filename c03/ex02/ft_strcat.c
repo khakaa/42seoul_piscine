@@ -11,15 +11,13 @@ int		ft_strlen(char *src)
 
 char	*ft_strcat(char *dest, char *src)
 {
-	int		d_i;
-	int		s_i;
+	int i;
+	int j;
 
-	s_i = 0;
-	d_i = ft_strlen(dest);
-	while (src[s_i])
-	{
-		dest[d_i++] = src[s_i++];
-	}
-	dest[d_i] = '\0';
+	i = ft_strlen(dest);
+	j = 0;
+	while (src[j])
+		dest[i++] = src[j++];
+	dest[i] = '\0';
 	return (dest);
 }

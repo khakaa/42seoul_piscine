@@ -55,9 +55,6 @@ int		get_index(char c, char *base)
 
 int		check_whitespace_minus(char str)
 {
-	int		i;
-
-	i = 0;
 	if (str == ' ' || str == '+' || (str >= '\t' && str <= '\r'))
 		return (1);
 	else if (str == '-')

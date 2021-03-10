@@ -17,6 +17,7 @@
             "MIMode": "lldb",
             // "miDebuggerPath": "/usr/bin/gdb",
             "preLaunchTask": "C/C++: gcc 활성 파일 빌드"
+            
         }
     ]
 }
