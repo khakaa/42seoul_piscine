@@ -1,14 +1,15 @@
 char    *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
-int g_base_l;
-
 int ft_strlen(char *str)
 {
     int i;
 
     i = 0;
     while (*str)
+    {
+        str++;
         i++;
+    }
     return (i);
 }
 
@@ -17,21 +18,19 @@ int check_base(char *base)
     int i;
     int j;
 
-    if (base[0] == '\0')
-        return (0);
     i = 0;
     while (*base)
     {
         if (base[i] >= '\t' && base[i] <= '\r')
             return (0);
-        if (base[i] == ' ' || g_base_l == 1 || g_base_l == 0)
+        if (base[i] == ' ' || ft_strlen(base) == 1 || ft_strlen(base) == 0)
             return (0);
         else if (base[i] == '+' || base[i] == '-')
             return (0);
         j = i + 1;
         while (base[j])
         {
-            if (base[i] = base[j])
+            if (base[i] == base[j])
                 return (0);
             j++;
         }
@@ -45,7 +44,7 @@ int get_index(char c, char *base)
     int i;
 
     i = 0;
-    while (i < g_base_l)
+    while (i < ft_strlen(base))
     {
         if ( c == base[i])
             return (i);
@@ -54,7 +53,7 @@ int get_index(char c, char *base)
     return (-1);
 }
 
-int chech_white_space(char str)
+int check_white_space(char str)
 {
     if (str == ' ' || str == '+' || (str >= '\t' && str <= '\r'))
         return (1);
@@ -64,57 +63,40 @@ int chech_white_space(char str)
         return (0);
 }
 
-int ft_atoi_base(char *str, char *base)
+int ft_atoi_base_from(char *nbr, char *base)
 {
+    int i;
     int sign;
     int result;
-    int i;
-
-    g_base_l = ft_strlen(base);
+    
     i = 0;
     sign = 1;
     result = 0;
-    while (check_whitebase_minus(str[i]))
+    while (check_white_space(nbr[i]))
     {
-        sign *= check_whitebase_minus(str[i]);
+        sign *= check_white_space(nbr[i]);
         i++;
     }
     if (!check_base(base))
     {
-        while (str[i])
+        while (nbr[i])
         {
-            if (get_index(str[i], base) == -1)
+            if (get_index(nbr[i], base) == -1)
                 break;
-            result *= g_base_l;
-            result += get_index(str[i], base);
+            result *= ft_strlen(base);
+            result += get_index(nbr[i], base);
             i++;
         }
     }
     return (sign * result);
 }
 
-char   ft_putnbr_base(int nbr, char *base)
-{
-    int i;
-    int base_l;
-    char *result;
-
-    base_l = ft_strlen(base);
-    result = (char *)malloc(sizeof(char) * (char)(base_l));
-    i = 0;
-    if (check_base(base))
-    {
-        while (nbr)
-        {
-            result = nbr % base_l;
-            nbr = nbr / base_l;
-        }
-            
-
-}
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+int main()
 {
-    printf("%s", ft_convert_base(argv[1], argv[2], argv[3]));
+    char str[] = "   \t -+--bc1a";
+	char base[] = "abcd";
+
+	printf("%d",ft_atoi_base_from(str,base));
 }
