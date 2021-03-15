@@ -19,11 +19,11 @@ int		check_base(char *base)
 	if (base[0] == '\0')
 		return (0);
 	i = 0;
-	while (*base)
+	while (base[i] != '\0')
 	{
 		if (base[i] >= '\t' && base[i] <= '\r')
 			return (0);
-		if (base[i] == ' ' || g_base_l == 1 || g_base_l == 0)
+		if (g_base_l == 1 || g_base_l == 0)
 			return (0);
 		else if (base[i] == '+' || base[i] == '-')
 			return (0);
@@ -78,7 +78,7 @@ int		ft_atoi_base(char *str, char *base)
 		sign *= check_whitespace_minus(str[i]);
 		i++;
 	}
-	if (!check_base(base))
+	if (check_base(base))
 	{
 		while (str[i])
 		{

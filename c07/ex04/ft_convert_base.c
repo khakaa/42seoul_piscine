@@ -1,4 +1,4 @@
-char    *ft_convert_base(char *nbr, char *base_from, char *base_to);
+#include <stdlib.h>
 
 int ft_strlen(char *str)
 {
@@ -18,12 +18,14 @@ int check_base(char *base)
     int i;
     int j;
 
+    if (base[0] == '\0')
+        return (0);
     i = 0;
-    while (*base)
+    while (base[i] != '\0')
     {
         if (base[i] >= '\t' && base[i] <= '\r')
             return (0);
-        if (base[i] == ' ' || ft_strlen(base) == 1 || ft_strlen(base) == 0)
+        if (ft_strlen(base) == 1 || ft_strlen(base) == 0)
             return (0);
         else if (base[i] == '+' || base[i] == '-')
             return (0);
@@ -53,7 +55,7 @@ int get_index(char c, char *base)
     return (-1);
 }
 
-int check_white_space(char str)
+int check_white_space_minus(char str)
 {
     if (str == ' ' || str == '+' || (str >= '\t' && str <= '\r'))
         return (1);
@@ -72,12 +74,12 @@ int ft_atoi_base_from(char *nbr, char *base)
     i = 0;
     sign = 1;
     result = 0;
-    while (check_white_space(nbr[i]))
+    while (check_white_space_minus(nbr[i]))
     {
-        sign *= check_white_space(nbr[i]);
+        sign *= check_white_space_minus(nbr[i]);
         i++;
     }
-    if (!check_base(base))
+    if (check_base(base))
     {
         while (nbr[i])
         {
@@ -89,14 +91,5 @@ int ft_atoi_base_from(char *nbr, char *base)
         }
     }
     return (sign * result);
-}
 
-#include <stdio.h>
-
-int main()
-{
-    char str[] = "   \t -+--bc1a";
-	char base[] = "abcd";
-
-	printf("%d",ft_atoi_base_from(str,base));
 }

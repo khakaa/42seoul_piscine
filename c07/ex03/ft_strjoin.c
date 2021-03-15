@@ -44,7 +44,7 @@ char *ft_strjoin(int size, char **strs, char *sep)
     while(i < size) 
         str_len += ft_strlen(strs[i++]);
     
-    result = (char *)malloc(sizeof(char) * (ft_strlen(sep) * (size - 1) + str_len + 1));
+    result = malloc(sizeof(char) * (ft_strlen(sep) * (size - 1) + str_len + 1));
     i = 0;
     while (i < size)
     {

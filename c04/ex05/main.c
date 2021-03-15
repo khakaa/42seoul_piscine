@@ -12,8 +12,8 @@ int	check_whitespace_minus(char *str);
 
 int	main()
 {
-	char str[] = "   \t -+--bc1a";
-	char base[] = "abcd";
+	char str[] = "   \t -+--bc";
+	char base[] = "";
 
 	printf("%d",ft_atoi_base(str,base));
 }

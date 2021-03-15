@@ -15,12 +15,12 @@ int		check_base(char *base)
 	int i;
 	int j;
 
-	if(base[0] == '\0')
+	if (base[0] == 0)
 		return (0);
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == ' ' || ft_strlen(base) == 1 || ft_strlen(base) == 0)
+		if (ft_strlen(base) == 1 || ft_strlen(base) == 0)
 			return (0);
 		else if (base[i] == '+' || base[i] == '-')
 			return (0);
