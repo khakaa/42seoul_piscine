@@ -2,7 +2,7 @@
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
-	int i;
+	int	i;
 	int	result;
 
 	result = max - min;
@@ -11,7 +11,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 		*range = NULL;
 		return (0);
 	}
-	*range = (int*)malloc(sizeof(int) * result);
+	*range = (int *)malloc(sizeof(int) * result);
 	if (!(*range))
 		return (-1);
 	i = 0;
