@@ -1,17 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: harpark <harpark@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/13 14:58:44 by harpark           #+#    #+#             */
+/*   Updated: 2021/03/13 15:03:07 by harpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int	result;
 	int sign;
 
 	result = 0;
 	sign = 1;
-	while (*str == ' ' ||
-			*str == '\n' ||
-			*str == '\t' ||
-			*str == '\v' ||
-			*str == '\f' ||
-			*str == '\r')
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
 	while (*str == '-' || *str == '+')
 	{
@@ -22,8 +28,8 @@ int		ft_atoi(char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		result *= 10;
-		result += sign * (*str - '0');
+		result += *str - '0';
 		str++;
 	}
-	return (result);
+	return (result * sign);
 }

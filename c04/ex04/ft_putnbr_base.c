@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: harpark <harpark@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/13 15:07:47 by harpark           #+#    #+#             */
+/*   Updated: 2021/03/16 23:19:26 by harpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 int		ft_strlen(char *base)
@@ -10,26 +22,29 @@ int		ft_strlen(char *base)
 	return (i);
 }
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 int		check_base(char *base)
 {
 	int i;
 	int j;
 
-	if (base[0] == 0)
+	if (!(*base))
 		return (0);
 	i = 0;
 	while (base[i])
 	{
-		if (ft_strlen(base) == 1 || ft_strlen(base) == 0)
+		if (ft_strlen(base) == 1)
 			return (0);
 		else if (base[i] == '+' || base[i] == '-')
 			return (0);
-		else if (base[i] < 32 || base[i] > 126)
-			return (0);
 		j = 1 + i;
-		while(base[j])
+		while (base[j])
 		{
-			if(base[i] == base[j])
+			if (base[i] == base[j])
 				return (0);
 			j++;
 		}
@@ -38,35 +53,28 @@ int		check_base(char *base)
 	return (1);
 }
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int i;
 	int base_l;
-	int nbr_result[50];
 
 	base_l = ft_strlen(base);
-	i = 0;
-	if (check_base(base))
+	if (check_base(base) == 1)
 	{
+		if (nbr == -2147483648)
+		{
+			ft_putnbr_base(nbr / base_l, base);
+			ft_putchar(base[(nbr % base_l) * -1]);
+			return ;
+		}
 		if (nbr < 0)
 		{
 			ft_putchar('-');
 			nbr = -nbr;
 		}
-		while (nbr != 0)
+		if (nbr >= base_l)
 		{
-			nbr_result[i] = nbr % base_l;
-			nbr = nbr / base_l;
-			i++;
+			ft_putnbr_base(nbr / base_l, base);
 		}
-		while (--i >= 0)
-		{
-			ft_putchar(base[nbr_result[i]]);
-		}
+		ft_putchar(base[nbr % base_l]);
 	}
 }

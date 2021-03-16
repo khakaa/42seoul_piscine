@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: harpark <harpark@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/11 23:29:10 by harpark           #+#    #+#             */
+/*   Updated: 2021/03/16 23:20:10 by harpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
 
 int		g_base_l;
 
@@ -16,14 +29,14 @@ int		check_base(char *base)
 	int		i;
 	int		j;
 
-	if (base[0] == '\0')
+	if (!(*base))
 		return (0);
 	i = 0;
-	while (base[i] != '\0')
+	while (base[i])
 	{
-		if (base[i] >= '\t' && base[i] <= '\r')
+		if ((base[i] >= '\t' && base[i] <= '\r') || base[i] == ' ')
 			return (0);
-		if (g_base_l == 1 || g_base_l == 0)
+		if (g_base_l == 1)
 			return (0);
 		else if (base[i] == '+' || base[i] == '-')
 			return (0);
@@ -55,7 +68,9 @@ int		get_index(char c, char *base)
 
 int		check_whitespace_minus(char str)
 {
-	if (str == ' ' || str == '+' || (str >= '\t' && str <= '\r'))
+	if (str == ' ' || str == '+' ||
+	str == '\t' || str == '\r' || str == '\f' ||
+	str == '\n' || str == '\v')
 		return (1);
 	else if (str == '-')
 		return (-1);
@@ -70,6 +85,8 @@ int		ft_atoi_base(char *str, char *base)
 	int		i;
 
 	g_base_l = ft_strlen(base);
+	if (!check_base(base))
+		return (0);
 	i = 0;
 	sign = 1;
 	result = 0;
@@ -78,16 +95,11 @@ int		ft_atoi_base(char *str, char *base)
 		sign *= check_whitespace_minus(str[i]);
 		i++;
 	}
-	if (check_base(base))
+	while (get_index(str[i], base) != -1)
 	{
-		while (str[i])
-		{
-			if (get_index(str[i], base) == -1)
-				break ;
-			result *= g_base_l;
-			result += get_index(str[i], base);
-			i++;
-		}
+		result *= g_base_l;
+		result += get_index(str[i], base);
+		i++;
 	}
 	return (sign * result);
 }
