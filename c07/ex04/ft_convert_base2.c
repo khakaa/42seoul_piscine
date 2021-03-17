@@ -27,14 +27,14 @@ int		get_number_size(int nbr, char *base)
 
 char	*ft_putnbr_base_to(int number, char *base)
 {
-	int		temp;
+	long long		temp;
 	int		size;
 	char	*result;
-	int		base_length;
 
-	base_length = ft_strlen(base);
 	size = get_number_size(number, base);
 	result = malloc(sizeof(char) * size);
+	if (!result)
+		return (0);
 	temp = number;
 	if (check_base(base))
 	{
@@ -44,9 +44,10 @@ char	*ft_putnbr_base_to(int number, char *base)
 			result[0] = '-';
 		while (temp)
 		{
-			result[--size] = base[temp % base_length];
-			temp = temp / base_length;
+			result[--size] = base[temp % ft_strlen(base)];
+			temp = temp / ft_strlen(base);
 		}
+		result[size] = 0;
 	}
 	return (result);
 }
@@ -56,9 +57,10 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		number;
 	char	*result;
 
-	if (!base_from || !base_to)
+	if (!check_base(base_from) && !check_base(base_to))
 		return (0);
-	number = ft_atoi_base_from(nbr, base_from);
+	else
+		number = ft_atoi_base_from(nbr, base_from);
 	result = ft_putnbr_base_to(number, base_to);
 	return (result);
 }
