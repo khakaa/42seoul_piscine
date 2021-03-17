@@ -79,11 +79,14 @@ int	ft_atoi_base_from(char *nbr, char *base)
 	}
 	while (nbr[i])
 	{
-		if (get_index(nbr[i], base) == -1)
-			break ;
-		result *= ft_strlen(base);
-		result += get_index(nbr[i], base);
-		i++;
+		if (get_index(nbr[i], base) != -1)
+		{
+			result *= ft_strlen(base);
+			result += get_index(nbr[i], base);
+			i++;
+		}
+		else
+			break;
 	}
 	return (sign * result);
 }
