@@ -1,20 +1,18 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 TARGET = libft.a
-
-SRCDIR = ./srcs/
-HEADER = ./includes/
-
-OPTION = -c -I $(HEADER)
-
+SRCDIR = srcs/
+HEADER = includes/
 SOURCES = $(SRCDIR)ft_putchar.c $(SRCDIR)ft_putstr.c $(SRCDIR)ft_strcmp.c $(SRCDIR)ft_strlen.c $(SRCDIR)ft_swap.c
-OBJS = ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
+OBJS = $(SOURCES:.c=.o)
 
-all : $(TARGET)
+%.o : %.c
+	$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
 
 $(TARGET) : $(OBJS)
-	$(CC) $(FLAGS) $(OPTION) $(SOURCES)
 	ar rc $@ $(OBJS)
+
+all : $(TARGET)
 
 clean : 
 	rm -f $(OBJS)
@@ -23,3 +21,5 @@ fclean : clean
 	rm -f $(TARGET)
 
 re : fclean all
+
+.PHONY: all clean fclean re

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: harpark <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 10:12:37 by harpark           #+#    #+#             */
+/*   Updated: 2021/03/18 14:45:56 by harpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdlib.h>
 
@@ -6,12 +17,24 @@ int		ft_strlen(char *str)
 	int	i;
 
 	i = 0;
-	while (*str)
+	while (str[i])
 	{
 		i++;
-		str++;
 	}
 	return (i);
+}
+
+int		strs_len(int size, char **strs, char *sep)
+{
+	int i;
+	int len;
+
+	i = 0;
+	len = 0;
+	while (i < size)
+		len += ft_strlen(strs[i++]);
+	len += ft_strlen(sep) * (size - 1) + 1;
+	return (len);
 }
 
 char	*ft_strcat(char *dest, char *src)
@@ -29,21 +52,18 @@ char	*ft_strcat(char *dest, char *src)
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int		str_len;
 	char	*result;
 	int		i;
 
-	if (size == 0)
+	if (size <= 0)
 	{
 		result = (char *)malloc(sizeof(char));
-		result[0] = 0;
-		return (NULL);
+		*result = 0;
+		return (result);
 	}
-	i = 0;
-	str_len = 0;
-	while (i < size)
-		str_len += ft_strlen(strs[i++]);
-	result = malloc(sizeof(char) * (ft_strlen(sep) * (size - 1) + str_len + 1));
+	if (!(result = malloc(sizeof(char) * strs_len(size, strs, sep))))
+		return (NULL);
+	*result = 0;
 	i = 0;
 	while (i < size)
 	{
@@ -53,15 +73,4 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		i++;
 	}
 	return (result);
-}
-
-#include <stdio.h>
-int		main()
-{
-	char	*strs[4];
-	char	*sep;
-
-	strs[4] = {"hello", "vv", "aaa", "bbb"};
-	sep = ",";
-	printf("%s", ft_strjoin(4, strs, sep));
 }

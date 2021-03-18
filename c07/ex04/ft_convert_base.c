@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: harpark <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 10:13:51 by harpark           #+#    #+#             */
+/*   Updated: 2021/03/18 10:18:00 by harpark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 int	ft_strlen(char *str)
@@ -23,8 +35,9 @@ int	check_base(char *base)
 		return (0);
 	while (base[i] != '\0')
 	{
-		if (base[i] == '\t' || base[i] == '\r' || base[i] == '\v' || base[i] == '\n'
-			|| base[i] == '\f' || base[i] == ' ' || base[i] == '+' || base[i] == '-')
+		if (base[i] == '\t' || base[i] == '\r' || base[i] == '\v'
+			|| base[i] == '\n' || base[i] == '\f' || base[i] == ' '
+			|| base[i] == '+' || base[i] == '-')
 			return (0);
 		j = i + 1;
 		while (base[j])
@@ -62,7 +75,7 @@ int	check_white_space_minus(char str)
 	else
 		return (0);
 }
-#include <stdio.h>
+
 int	ft_atoi_base_from(char *nbr, char *base)
 {
 	int	i;
@@ -86,7 +99,7 @@ int	ft_atoi_base_from(char *nbr, char *base)
 			i++;
 		}
 		else
-			break;
+			break ;
 	}
 	return (sign * result);
 }
